@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<header class="header-nav">
+    <a class="logo" href="index.html">영화 관리</a>
+    <div>
+        <a href="create.html">영화 등록</a>
+        <a href="list.html">영화 목록</a>
+    </div>
+</header>
+
+<body>
+    <div id="app" class="container" style="text-align: center;">
+        <img v-bind:src="imgUrl">
+        <h1>{{ welcome }}</h1>
+        <input type="text" class="view" v-model="keyword" v-on:input="find" placeholder="영화 제목을 입력하세요.">
+        <button class="btn" v-on:click="find">검색</button>
+        <hr>
+        <h2 style="text-align: left;">검색 결과</h2>
+        <div v-if="findArr.length == 0 || keyword == ''">검색 결과가 없습니다.</div>
+        <div v-else>
+            <ul>
+                <li v-for="movie in findArr">{{movie.title}}</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    welcome: "영화 정보 관리 사이트입니다.",
+                    imgUrl: "img/logo.png",
+                    keyword: "",
+                    movieArr: JSON.parse(localStorage.getItem("movieArr")),
+                    findArr: []
+                }
+            },
+            methods: {
+                find: function(){
+                    this.findArr = [];
+                    for(let movie of this.movieArr){
+                        if(movie.title.includes(this.keyword)){
+                            this.findArr.push(movie);
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <title>Vue</title>
+</head>
+
+<header class="header-nav">
+    <a class="logo" href="index.html">영화 관리</a>
+    <div>
+        <a href="create.html">영화 등록</a>
+        <a href="list.html">영화 목록</a>
+    </div>
+</header>
+
+<body>
+    <div id="app" class="container">
+        <h1>영화 등록</h1>
+        <div style="border: 1px solid;" align="center">
+            <table class="text-center" width="100%;">
+                <tr>
+                    <td>제목</td>
+                    <td><input type="text" class="view" v-model="title"></td>
+                </tr>
+                <tr>
+                    <td>감독</td>
+                    <td><input type="text" class="view" v-model="director"></td>
+                </tr>
+                <tr>
+                    <td>장르</td>
+                    <td><input type="text" class="view" v-model="genre"></td>
+                </tr>
+                <tr>
+                    <td>상영 시간</td>
+                    <td><input type="text" class="view" v-model="runningTime"></td>
+                </tr>
+            </table>
+            <button class="btn" v-on:click="regist">등록</button>
+        </div>
+    </div>
+    <script>
+
+        const app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    title: "",
+                    director: "",
+                    genre: "",
+                    runningTime: "",
+                    movieArr: JSON.parse(localStorage.getItem("movieArr"))
+                }
+            },
+            methods: {
+                regist: function(){
+                    if(this.title !== "" && this.director !== "" && this.genre !== "" && this.runningTime !== ""){
+                        if(this.movieArr == null){
+                            this.movieArr = [];
+                        }
+
+                    }
+                    const movie = {
+                        id: this.movieArr.length + 1,
+                        title: this.title,
+                        director: this.director,
+                        genre: this.genre,
+                        runningTime: this.runningTime
+                    }
+                    this.movieArr.push(movie);
+                    localStorage.setItem("movieArr", JSON.stringify(this.movieArr));
+                    this.clear();
+                },
+                clear: function(){
+                    this.title = "";
+                    this.director = "";
+                    this.genre = "";
+                    this.runningTime = "";
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
