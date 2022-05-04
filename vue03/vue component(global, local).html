@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue Component Global, Local</title>
+</head>
+
+<body>
+    <div id="app1">
+        <!-- 케밥 케이스로 작성해야 인식 -->
+        <global-comp></global-comp>
+        <local-comp></local-comp>
+    </div>
+
+    <div id="app2">
+        <global-comp></global-comp>
+        <local-comp></local-comp>
+    </div>
+
+    <script>
+        // (name, options)
+        Vue.component('globalComp', {
+            template: '<h2>Global Component</h2>',
+        });
+
+        new Vue({
+            el: '#app1',
+            data() {
+                return {
+
+                }
+            },
+            components: {
+                'localComp' : {
+                    template: '<h2>Local Component</h2>'
+                }
+            }
+        })
+
+        new Vue({
+            el: '#app2',
+            data() {
+                return {
+
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

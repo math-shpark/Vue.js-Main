@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <p>E-mail
+                <input type="checkbox" name="" id="email" v-model="email">
+                <label for="email">{{email}}</label>
+            </p>
+            <p>
+                SMS
+                <input type="checkbox" name="" id="sms" v-model="sms" true-value="Y" false-value="N">
+                <label for="sms">{{ sms }}</label>
+            </p>
+            <p>
+                Location
+                <input type="radio" name="" id="seoul" value="서울" v-model="checkedLocation">
+                <label for="seoul">서울</label>
+
+                <input type="radio" name="" id="incheon" value="인천" v-model="checkedLocation">
+                <label for="incheon">인천</label>
+
+                <input type="radio" name="" id="gwangju" value="광주" v-model="checkedLocation">
+                <label for="gwangju">광주</label>
+
+                <input type="radio" name="" id="busan" value="부산" v-model="checkedLocation">
+                <label for="busan">부산</label>
+
+                <input type="radio" name="" id="daegu" value="대구" v-model="checkedLocation">
+                <label for="daegu">대구</label>
+
+                <input type="radio" name="" id="daejeon" value="대전" v-model="checkedLocation">
+                <label for="daejeon">대전</label>
+
+                <input type="radio" name="" id="ulsan" value="울산" v-model="checkedLocation">
+                <label for="ulsan">울산</label>
+                <br>
+                <span>선택한 지역 : {{checkedLocation}}</span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    email: false,
+                    sms: "Y",
+                    checkedLocation: ""
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

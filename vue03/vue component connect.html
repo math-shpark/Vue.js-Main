@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue Component Connect</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>props test</h2>
+        <!-- 정적 -->
+        <child-comp props-data="Static Message"></child-comp>
+        <input type="text" name="" id="" v-model="msg" autofocus>
+        <!-- 동적 -->
+        <child-comp :props-data="msg"></child-comp>
+    </div>
+
+    <script>
+        Vue.component('ChildComp', {
+            template: '<div>{{ propsData }}</div>',
+            props: [
+                'propsData'
+            ]
+        })
+
+        new Vue({
+            el: '#app',
+            data(){
+                return{
+                    msg: ""
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue Component Connect</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <child-comp area="seoul" :msg="msgList[parseInt(Math.random()*5)]"></child-comp>
+        <child-comp area="daejeon" :msg="msgList[parseInt(Math.random()*5)]"></child-comp>
+        <child-comp area="gwangju" :msg="msgList[parseInt(Math.random()*5)]"></child-comp>
+        <child-comp area="busan" :msg="msgList[parseInt(Math.random()*5)]"></child-comp>
+        <child-comp area="incheon" :msg="msgList[parseInt(Math.random()*5)]"></child-comp> -->
+
+        <child-comp v-for="city in areas" :area="city" :msg="msgList[parseInt(Math.random()*5)]"></child-comp>
+    </div>
+
+    <template id="ChildComp">
+        <div>
+            <h2>{{ area }} 지역 {{ msg }}</h2>
+        </div>
+    </template>
+
+    <script>
+        Vue.component('ChildComp', {
+            template: '#ChildComp',
+            props: {
+                'area': String,
+                'msg': {
+                    type: String,
+                    required: true
+                }
+            }
+        })
+
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    areas: ['서울', '부산', '대전', '광주', '인천'],
+                    msgList: ["편한 교통", "좋은 공기", "넓은 바다", "좋은 경치", "맛있는 음식"]
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
