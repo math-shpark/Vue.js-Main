@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue Event</title>
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click="counter++">Click</button>
+        <div>버튼 누른 횟수 :  {{ counter }}</div>
+        <button @click="greet">인사 메시지</button>
+        <button @click="greet2('world')">인사 메시지 2</button>
+        <button @click="greet3($event, 'front')">인사 메시지 3</button>
+
+        <h2>페이지 이동</h2>
+        <a href="vue filter.html" @click="sendMsg">페이지 이동 1</a>
+        <a href="vue filter.html" @click.prevent="sendMsg">페이지 이동 2</a>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    counter: 0,
+                    msg: "Vue"
+                }
+            },
+            methods: {
+                greet(event){
+                    alert(`Hello ${this.msg}!`);
+                    console.dir(event);
+                },
+                greet2(msg){
+                    alert(`Hello ${msg}`);
+                    console.log(event);
+                },
+                greet3(e, msg){
+                    alert(`Hello ${msg}`);
+                    console.log(event.target);
+                },
+                sendMsg(){
+                    alert('이동');
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

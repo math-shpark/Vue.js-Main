@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>To Do</title>
+    <style>
+        .completed {
+            text-decoration: line-through;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h3>To Do List</h3>
+        <ul type="square">
+            <li :class="{completed: todo.done}" :style="myStyle" v-for="todo in todoList">
+                {{ todo.todo }}
+                <button @click="complete(todo)">완료</button>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    todoList: [
+                        {
+                            todo: "exercise",
+                            done: false
+                        },
+                        {
+                            todo: "study",
+                            done: false
+                        },
+                        {
+                            todo: "read book",
+                            done: false
+                        }
+                    ],
+                    myStyle: {
+                        fontSize: '25px'
+                    }
+                }
+            },
+            methods: {
+                complete(obj) {
+                    obj.done = !obj.done;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
