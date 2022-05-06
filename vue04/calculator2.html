@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Calculator</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" name="" id="" v-model.number="num1">
+        <select name="" id="" v-model="op">
+            <option value="+">+</option>
+            <option value="-">-</option>
+        </select>
+        <input type="text" name="" id="" v-model.number="num2">
+        <button @click="doCal">계산하기</button>
+        <div>{{ result }}</div>
+    </div>
+
+    <script type="module" src="calculator2.js"></script>
+</body>
+
+</html>
