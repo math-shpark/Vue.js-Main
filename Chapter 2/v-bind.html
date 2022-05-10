@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-bind</title>
+</head>
+
+    <div id="app">
+        <div v-bind:id="dynamicId"></div>
+        <button v-bind:disabled="isButtonDisabled">버튼</button>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data(){
+                return{
+                    dynamicId: 'newId',
+                    isButtonDisabled: false
+                }
+            }
+        })
+    </script>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-html</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>이중 중괄호로 출력 : {{ rawHtml }}</p>
+        <p>v-html를 사용해서 출력 : <span v-html="rawHtml"></span></p>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    rawHtml: '<span style="color:red">빨간색으로 출력</span>'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
