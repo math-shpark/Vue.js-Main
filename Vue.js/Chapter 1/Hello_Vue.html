@@ -2,14 +2,12 @@
 <html lang="ko">
 
 <head>
+    <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <title>v-model</title>
+    <title>Hello Vue!</title>
 </head>
-
-<body>
     <div id="app">
-        <p>{{ msg }}</p>
-        <input type="text" v-model="msg">
+        {{ message }}
     </div>
 
     <script>
@@ -17,11 +15,13 @@
             el: '#app',
             data(){
                 return{
-                    msg: '본 메시지는 양방향으로 바인딩됩니다.'
+                    message: "Hello Vue.js!"
                 }
             }
         })
     </script>
+<body>
+
 </body>
 
 </html>

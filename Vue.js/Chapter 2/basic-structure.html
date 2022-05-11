@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Basic Structure</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li>
+                책 제목 : {{ bookName }}
+            </li>
+            <li>
+                출판사 : {{ publisher }}
+            </li>
+            <li>
+                가격 : {{ getPrice() }}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    bookName: 'Vue.js 정복하기',
+                    publisher: 'computer',
+                    bookPrice: 20000,
+                    discount: 5000,
+                }
+            },
+            methods: {
+                getPrice() {
+                    const sum = this.bookPrice - this.discount;
+                    return sum;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
