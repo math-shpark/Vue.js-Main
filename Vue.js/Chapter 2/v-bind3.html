@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-bind</title>
+</head>
+
+<body>
+    <div id="app">
+        <a v-bind:[attribute_name]="url">네이버</a>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data(){
+                return{
+                    attribute_name : 'href',
+                    url: 'https://www.naver.com'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
