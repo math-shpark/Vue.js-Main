@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-model</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>언어 선택</p>
+        <input type="radio" id="js" value="JavaScript" v-model="picked">
+        <label for="js">JavaScript</label>
+        <input type="radio" id="css" value="CSS" v-model="picked">
+        <label for="css">CSS</label>
+        <input type="radio" id="html" value="HTML" v-model="picked">
+        <label for="html">HTML</label>
+        <div>선택한 언어 : {{ picked }}</div>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    picked: 'JavaScript'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

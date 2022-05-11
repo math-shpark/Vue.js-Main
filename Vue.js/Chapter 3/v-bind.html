@@ -3,23 +3,23 @@
 
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <title>v-if</title>
+    <title>v-bind</title>
 </head>
 
 <body>
     <div id="app">
-        <h3>Front-end</h3>
-        <p v-if="num === 1">JavaScript</p>
-        <p v-else-if="num === 2">CSS</p>
-        <p v-else>HTML</p>
+        <input type="text" v-model="url" placeholder="이동하려는 홈페이지의 주소를 입력하세요.">
+        <div>
+            <a v-bind:href="url">이동하기</a>
+        </div>
     </div>
 
     <script>
         const app = new Vue({
             el: '#app',
-            data(){
-                return{
-                    num: 1
+            data() {
+                return {
+                    url: ''
                 }
             }
         })

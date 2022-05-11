@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>watch</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <label for="original">원본</label>
+            <input type="text" v-model="message">
+        </div>
+        <div>
+            <label for="reverse">역순</label>
+            <input type="text" v-model="reverseMessage">
+        </div>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    message: "안녕하세요 반갑습니다",
+                    reverseMessage: ""
+                }
+            },
+            watch: {
+                message(newValue) {
+                    this.reverseMessage = newValue.split('').reverse().join('');
+                },
+                reverseMessage(newValue) {
+                    this.message = newValue.split('').reverse().join('');
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

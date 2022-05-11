@@ -3,15 +3,14 @@
 
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <title>v-if</title>
+    <title>v-model</title>
 </head>
 
 <body>
     <div id="app">
-        <h3>Front-end</h3>
-        <p v-if="num === 1">JavaScript</p>
-        <p v-else-if="num === 2">CSS</p>
-        <p v-else>HTML</p>
+        <textarea v-model="message" placeholder="문자열을 입력해주세요."></textarea>
+        <p>여러 줄의 메시지</p>
+        <p style="white-space: pre-line">{{ message }}</p>
     </div>
 
     <script>
@@ -19,10 +18,10 @@
             el: '#app',
             data(){
                 return{
-                    num: 1
+                    message: ''
                 }
             }
-        })
+        });
     </script>
 </body>
 

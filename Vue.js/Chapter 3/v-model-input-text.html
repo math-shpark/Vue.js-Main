@@ -1,25 +1,23 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <title>v-if</title>
+    <title>v-model</title>
 </head>
 
 <body>
     <div id="app">
-        <h3>Front-end</h3>
-        <p v-if="num === 1">JavaScript</p>
-        <p v-else-if="num === 2">CSS</p>
-        <p v-else>HTML</p>
+        <input type="text" v-model="message" placeholder="문자열을 입력해주세요." autofocus>
+        <p>바인딩된 메시지: {{ message }}</p>
     </div>
 
     <script>
         const app = new Vue({
             el: '#app',
-            data(){
-                return{
-                    num: 1
+            data() {
+                return {
+                    message: ''
                 }
             }
         })

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-model</title>
+</head>
+
+<body>
+    <div id="app">
+        <select v-model="selected" multiple>
+            <option>JavaScript</option>
+            <option>CSS</option>
+            <option>HTML</option>
+        </select>
+        <div>
+            선택한 언어 : {{ selected }}
+        </div>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    selected: []
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

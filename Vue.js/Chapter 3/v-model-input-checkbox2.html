@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-model</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="checkbox" id="js" value="JavaScript" v-model="checkedLang">
+        <label for="js">JavaScript</label>
+        <input type="checkbox" id="css" value="CSS" v-model="checkedLang">
+        <label for="css">CSS</label>
+        <input type="checkbox" id="html" value="HTML" v-model="checkedLang">
+        <label for="html">HTML</label>
+
+        <div>체크한 언어 : {{ checkedLang }}</div>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    checkedLang: []
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

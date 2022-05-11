@@ -3,23 +3,24 @@
 
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <title>v-if</title>
+    <title>v-show</title>
 </head>
 
 <body>
     <div id="app">
         <h3>Front-end</h3>
-        <p v-if="num === 1">JavaScript</p>
-        <p v-else-if="num === 2">CSS</p>
-        <p v-else>HTML</p>
+        <p>JavaScript</p>
+        <p>CSS</p>
+        <p>HTML</p>
+        <p v-show="isShow">Vue.js</p>
     </div>
 
     <script>
         const app = new Vue({
             el: '#app',
-            data(){
-                return{
-                    num: 1
+            data() {
+                return {
+                    isShow: false
                 }
             }
         })

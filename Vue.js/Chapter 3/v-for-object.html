@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-for</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>Person Info</h3>
+        <p v-for="value in person">{{ value }}</p>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    person: {
+                        name: "홍길동",
+                        job: "학생",
+                        age: 23,
+                        birth: "2000-05-11"
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

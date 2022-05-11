@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-for</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>Person Info</h3>
+        <p v-for="(value, name, index) in person">{{ index }}번째 정보는 {{ name }} 이고 값은 {{ value }}입니다.</p>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    person: {
+                        name: "Hong",
+                        job: "Student",
+                        birth: 2000,
+                        age: 23
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-for</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>Front-end</h3>
+        <p v-for="lang in langs">
+            {{ lang.id }} : {{ lang.name }}
+        </p>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    langs: [
+                        { id: 1, name: "JavaScript" },
+                        { id: 2, name: "CSS" },
+                        { id: 3, name: "HTML" }
+                    ]
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

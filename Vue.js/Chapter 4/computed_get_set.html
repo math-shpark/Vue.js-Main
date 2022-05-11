@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>computed</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <label for="original">원본</label>
+            <input type="text" v-model="message">
+        </div>
+        <div>
+            <label for="reverse">역순</label>
+            <input type="text" v-model="reversedMessage">
+        </div>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    message: '안녕하세요 반갑습니다'
+                }
+            },
+            computed: {
+                reversedMessage: {
+                    get() {
+                        return this.message.split("").reverse().join("");
+                    },
+                    set(newValue) {
+                        this.message = newValue.split("").reverse().join("");
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
