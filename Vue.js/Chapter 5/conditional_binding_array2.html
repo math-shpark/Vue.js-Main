@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .static {
+            font-size: 30px;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .redText {
+            color: red;
+        }
+
+        .blueBackground {
+            background: blue;
+        }
+    </style>
+    <title>v-bind:class</title>
+</head>
+
+<body>
+    <div id="app">
+        <p class="static" v-bind:class="[{center: isCenter}, {redText: isRedText}, {blueBackground: isBlueBackground}]">
+            {{ message }}
+        </p>
+        <input type="checkbox" id="center" v-model="isCenter">
+        <label for="center">중앙 정렬하기</label>
+        <input type="checkbox" id="redText" v-model="isRedText">
+        <label for="redText">글자색을 빨간색으로</label>
+        <input type="checkbox" id="blueBackground" v-model="isBlueBackground">
+        <label for="blueBackground">배경을 파란색으로</label>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    message: "Hello Vue!",
+                    isCenter: false,
+                    isRedText: true,
+                    isBlueBackground: false,
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

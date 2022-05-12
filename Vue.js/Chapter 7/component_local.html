@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>component</title>
+</head>
+
+<body>
+    <div id="app">
+        <my-component></my-component>
+    </div>
+
+    <script>
+        let Child = {
+            template: '<div>컴포넌트로 추가된 부분입니다.</div>'
+        }
+
+        const app = new Vue({
+            el: '#app',
+            components: {
+                'my-component': Child
+            }
+        })
+    </script>
+</body>
+
+</html>

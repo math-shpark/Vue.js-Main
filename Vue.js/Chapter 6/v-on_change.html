@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-on</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>Select</h3>
+        <select v-model="selected" v-on:change="choose1">
+            <option value="" disabled>Language</option>
+            <option v-for="lang in langs" v-bind:value="lang">
+                {{ lang }}
+            </option>
+        </select>
+
+        <h3>Radio</h3>
+        <div v-for="lang in langs">
+            <input type="radio" v-bind:id="lang" v-bind:value="lang" v-model="picked" v-on:change="choose2">
+            <label v-bind:for="lang">{{ lang }}</label>
+        </div>
+
+        <h3>Checkbox</h3>
+        <div v-for="lang in langs">
+            <input type="checkbox" v-bind:id="lang" v-bind:value="lang" v-model="checkedName" v-on:change="choose3">
+            <label v-bind:for="lang">{{ lang2 }}</label>
+        </div>
+
+        <h3>Text</h3>
+        <input type="text" v-model="text" v-on:change="choose4">
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    langs: ["Vue", "JavaScript", "CSS", "HTML"],
+                    selected: '',
+                    picked: '',
+                    checkedName: [],
+                    text: ''
+                }
+            },
+            methods: {
+                choose1() {
+                    if (this.selected !== '') {
+                        alert(this.selected);
+                    }
+                },
+                choose2() {
+                    alert(this.picked);
+                },
+                choose3() {
+                    alert(this.checkedName);
+                },
+                choose4() {
+                    alert(this.text);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

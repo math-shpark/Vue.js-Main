@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>props</title>
+</head>
+
+<body>
+    <div id="app">
+        <my-message message="Hello!"></my-message>
+    </div>
+
+    <script>
+        let Child = {
+            template: '<div>{{ message }}</div>',
+            props: ['message']
+        }
+
+        const app = new Vue({
+            el: '#app',
+            components: {
+                'my-message': Child
+            }
+        })
+    </script>
+</body>
+
+</html>

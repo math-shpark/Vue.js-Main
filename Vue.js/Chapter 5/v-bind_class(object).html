@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-bind:class</title>
+    <style>
+        .static {
+            font-size: 30px;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .redText {
+            color: red;
+        }
+
+        .blueBackground {
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p class="static" v-bind:class="{center: isCenter, redText: isRedText, blueBackground: isBlueBackground}">{{
+            message }}</p>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data(){
+                return{
+                    message: "Hello Vue!",
+                    isCenter: true,
+                    isRedText: false
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

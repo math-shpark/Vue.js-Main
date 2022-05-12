@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>component</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="parentMsg">
+        <br>
+        <child v-bind:my-message="parentMsg"></child>
+    </div>
+
+    <script>
+        let Child = {
+            template: '<span>{{ myMessage }}</span>',
+            props: ['myMessage']
+        }
+
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    parentMsg: ''
+                }
+            },
+            components: {
+                'child': Child
+            }
+        })
+    </script>
+</body>
+
+</html>

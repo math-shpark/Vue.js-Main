@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>component</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>Language</h3>
+        <div v-for="lang in langs">
+            {{ lang.name }}
+            <counter-button v-on:increment="incrementStatus()"></counter-button>
+        </div>
+        <p>Total : {{ total }}</p>
+    </div>
+
+    <script>
+        let counterButton = {
+            template: '<span>{{ counter }}개 <button v-on:click="addToStatus">추가</button></span>',
+            data() {
+                return {
+                    counter: 0
+                }
+            },
+            methods: {
+                addToStatus() {
+                    this.counter++;
+                    this.$emit("increment");
+                }
+            }
+        }
+
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    total: 0,
+                    langs: [
+                        { name: 'Vue' },
+                        { name: 'JS' },
+                        { name: 'CSS' }
+                    ]
+                }
+            },
+            components: {
+                'counterButton': counterButton
+            },
+            methods: {
+                incrementStatus() {
+                    this.total++;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

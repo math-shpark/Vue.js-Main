@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>component</title>
+</head>
+
+<body>
+    <div id="app">
+        <my-button></my-button>
+        <my-button></my-button>
+        <my-button></my-button>
+    </div>
+
+    <script>
+        let Child = {
+            template: '<button v-on:click="count++">{{ count }}</button>',
+            data() {
+                return {
+                    count: 0
+                }
+            }
+        }
+
+        const app = new Vue({
+            el: '#app',
+            components: {
+                'my-button': Child
+            }
+        })
+    </script>
+</body>
+
+</html>

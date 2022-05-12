@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>component</title>
+</head>
+
+<body>
+    <div id="app1">
+        <h2>App1</h2>
+        <local-component></local-component>
+        <global-component></global-component>
+    </div>
+
+    <div id="app2">
+        <h2>App2</h2>
+        <local-component></local-component>
+        <global-component></global-component>
+    </div>
+
+    <script>
+        Vue.component("globalComponent", {
+            template: "<div>전역 컴포넌트입니다.</div>"
+        })
+
+        let localComponent = {
+            template: "<div>지역 컴포넌트입니다.</div>"
+        }
+
+        const app1 = new Vue({
+            el: '#app1',
+            components: {
+                'localComponent': localComponent
+            }
+        })
+
+        const app2 = new Vue({
+            el: '#app2',
+        })
+    </script>
+</body>
+
+</html>

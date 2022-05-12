@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>component</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>Language</h3>
+        <custom-tag @increment="func2" lang="Vue"></custom-tag>
+        <custom-tag @increment="func2" lang="JS"></custom-tag>
+        <custom-tag @increment="func2" lang="CSS"></custom-tag>
+        <p>Total : {{ total }}</p>
+    </div>
+
+    <script>
+        const customTag = {
+            props: ['lang'],
+            template: `
+            <div>
+                <label>{{ lang }} 신청 인원</label>
+                <input type="number" v-model="value"/>
+                <button v-on:click="func1">추가</button>
+                <label>신청 인원 {{ num }}명</label>
+            </div>
+            `,
+            data() {
+                return {
+                    value: 0,
+                    num: 0
+                }
+            },
+            methods: {
+                func1() {
+                    this.num += Number(this.value);
+                    this.$emit("increment", Number(this.value));
+                }
+            }
+        }
+
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    total: 0
+                }
+            },
+            components: {
+                'customTag': customTag
+            },
+            methods: {
+                func2(val) {
+                    this.total += val;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
