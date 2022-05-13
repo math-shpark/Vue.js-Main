@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+    <title>route</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>Front end</h3>
+        <div>
+            <router-link to="/front/vue">Vue.js</router-link>
+            <router-link to="/front/js">JS</router-link>
+            <router-link to="/front/css">CSS</router-link>
+        </div>
+        <router-view></router-view>
+    </div>
+
+    <script>
+        const Lang = {
+            template: '<div>Lang {{ $route.params.id }}</div>'
+        }
+
+        const router = new VueRouter({
+            routes: [
+                {
+                    path: '/front/:id',
+                    component: Lang
+                }
+            ]
+        })
+
+        const app = new Vue({
+            el: '#app',
+            router: router
+        })
+    </script>
+</body>
+
+</html>

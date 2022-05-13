@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+    <title>Router</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>Router</h3>
+        <div>
+            <router-link to="/greet">인사</router-link>
+            <router-link to="/list">목록</router-link>
+        </div>
+        <router-view></router-view>
+    </div>
+
+    <script>
+        const greeting = {
+            template: '<div>인사만 공간입니다.</div>'
+        }
+
+        const list = {
+            template: '<div>목록 공간입니다.</div>'
+        }
+
+        const routes = [
+            {
+                path: '/greet',
+                component: greeting
+            },
+            {
+                path: '/list',
+                component: list
+            }
+        ]
+
+        const router = new VueRouter({
+            routes: routes
+        })
+
+        new Vue({
+            router: router
+        }).$mount('#app');
+    </script>
+</body>
+
+</html>
