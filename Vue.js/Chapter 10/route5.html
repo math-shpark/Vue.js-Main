@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+    <title>router</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>수강자 목록</h3>
+        <router-link to="/user/hong">홍길동</router-link>
+        <router-link to="/user/kim">김철수</router-link>
+        <router-link to="/user/lee">이유리</router-link>
+        <router-view></router-view>
+    </div>
+
+    <script>
+        const User = {
+            template: `
+            <div class="user">
+                <h2>User {{ $route.params.id }}</h2>
+                <router-link :to="'/user/' + $route.params.id + '/profile'">상세 정보</router-link>
+                <router-link :to="'/user/' + $route.params.id + '/post'">게시글</router-link>
+                <router-view></router-view>
+            </div>
+            `
+        }
+
+        const UserProfile = {
+            template: '<div>{{ $route.params.id }}의 Profile</div>'
+        }
+
+        const UserPost = {
+            template: '<div>{{ $route.params.id }}의 게시글</div>'
+        }
+
+        const router = new VueRouter({
+            routes: [
+                {
+                    path: '/user/:id',
+                    component: User,
+                    children: [
+                        {
+                            path: 'profile',
+                            component: UserProfile
+                        },
+                        {
+                            path: 'post',
+                            component: UserPost
+                        }
+                    ]
+                }
+            ]
+        })
+
+        const app = new Vue({
+            el: '#app',
+            router: router
+        })
+    </script>
+</body>
+
+</html>

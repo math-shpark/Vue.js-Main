@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+    <title>router</title>
+</head>
+
+<body>
+    <div id="app">
+        <router-view></router-view>
+    </div>
+
+    <script>
+        const User = {
+            template: `
+            <div class="user">
+                <h2>수강자 {{ $route.params.id }}</h2>
+                <router-view></router-view>
+            </div>
+            `
+        }
+
+        const UserHome = {
+            template: '<div>{{ $route.params.id }}의 수강 정보 입니다.</div>'
+        }
+
+        const UserProfile = {
+            template: '<div>{{ $route.params.id }}의 Profile</div>'
+        }
+
+        const UserPost = {
+            template: '<div>{{$route.params.id}}의 게시물</div>'
+        }
+
+        const router = new VueRouter({
+            routes: [
+                {
+                    path: '/user/:id',
+                    component: User,
+                    children: [
+                        {
+                            path: 'profile',
+                            component: UserProfile
+                        },
+                        {
+                            path: 'post',
+                            component: UserPost
+                        },
+                        {
+                            path: '',
+                            component: UserHome
+                        }
+                    ]
+                }
+            ]
+        })
+
+        new Vue({
+            el: '#app',
+            router: router
+        })
+    </script>
+</body>
+
+</html>
