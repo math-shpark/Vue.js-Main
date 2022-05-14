@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+    <title>router</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>Front end</h3>
+        <router-view></router-view>
+        <router-view name="a"></router-view>
+        <router-view name="b"></router-view>
+    </div>
+
+    <script>
+        const Js = {
+            template: '<div>JS</div>'
+        }
+
+        const Css = {
+            template: '<div>CSS</div>'
+        }
+
+        const Html = {
+            template: '<div>HTML</div>'
+        }
+
+        const router = new VueRouter({
+            routes: [
+                {
+                    path: '/',
+                    components: {
+                        default: Js,
+                        a: Css,
+                        b: Html
+                    }
+                }
+            ]
+        })
+
+        const app = new Vue({
+            el: '#app',
+            router: router
+        })
+    </script>
+</body>
+
+</html>

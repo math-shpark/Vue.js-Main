@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+    <title>router</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>Front-end 수강목록</h3>
+        <select v-model="selected">
+            <option value="" disabled>과목</option>
+            <option>Vue.js</option>
+            <option>JavaScript</option>
+            <option>CSS</option>
+        </select>
+        <button @click="func">수강신청</button>
+        <router-view></router-view>
+    </div>
+
+    <script>
+        const Info = {
+            template: '<div>{{ $route.params.subject }}을 선택하였습니다.'
+        }
+
+        const router = new VueRouter({
+            routes: [
+                {
+                    path: '/info/:subject',
+                    name: 'info',
+                    component: Info
+                }
+            ]
+        })
+
+        const app = new Vue({
+            el: '#app',
+            router: router,
+            data() {
+                return {
+                    selected: ''
+                }
+            },
+            methods: {
+                func() {
+                    this.$router.push({
+                        name: 'info',
+                        params: {
+                            subject: this.selected
+                        }
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
