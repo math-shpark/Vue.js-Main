@@ -2,30 +2,38 @@
   <div>
     <h3>글 상세 페이지</h3>
     <div>
-      {{ board.title }}
-      {{ board.vieCnt}}
-      {{ board.writer }}
-      {{ board.regDate }}
-      {{ board.content }}
+      <div>제목 : {{ board.title }}</div>
+      <div>조회수 : {{ board.viewCnt }}</div>
+      <div>작성자 : {{ board.writer }}</div>
+      <div>작성일 : {{ board.regDate }}</div>
+      <div>내용 : {{ board.content }}</div>
     </div>
+    <button @click="moveUpdate">수정</button>
+    <button @click="deleteBoard">삭제</button>
   </div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import { mapState } from "vuex";
 
 export default {
   name: "BoardDetail",
-  created(){
+  created() {
     const pathName = new URL(document.location).pathname.split("/");
     const id = pathName[pathName.length - 1];
-    this.$store.dispatch('getBoard', id);
+    this.$store.dispatch("getBoard", id);
   },
   computed: {
-    ...mapState([
-      'board'
-    ])
-  }
+    ...mapState(["board"]),
+  },
+  methods: {
+    moveUpdate() {
+      this.$router.push({ name: "boardUpdate" });
+    },
+    deleteBoard() {
+      this.$store.dispatch("deleteBoard", this.board.id);
+    },
+  },
 };
 </script>
 
