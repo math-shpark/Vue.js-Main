@@ -1,6 +1,7 @@
 <template>
   <div>
     <h3>글 작성</h3>
+    <div class="m-4"></div>
     <fieldset>
       <legend>등록 내용</legend>
       <label for="title">제목</label>
