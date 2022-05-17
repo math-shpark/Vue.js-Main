@@ -1,17 +1,35 @@
 <template>
-  <div>
+  <div class="container">
     <h3>글 작성</h3>
-    <div class="m-4"></div>
-    <fieldset>
-      <legend>등록 내용</legend>
-      <label for="title">제목</label>
-      <input type="text" id="title" v-model="title" /> <br />
-      <label for="writer">글쓴이</label>
-      <input type="text" id="writer" v-model="writer" /> <br />
-      <label for="content">내용</label>
-      <input type="text" id="content" v-model="content" /> <br />
-      <button @click="createBoard">등록하기</button>
-    </fieldset>
+    <div class="m-4">
+      <b-form-group label="제목" label-for="input-1">
+        <b-form-input
+          id="input-1"
+          v-model="title"
+          trim
+          placeholder="제목을 입력하세요."
+        ></b-form-input>
+      </b-form-group>
+      <b-form-group label="글쓴이" label-for="input-2">
+        <b-form-input
+          id="input-2"
+          v-model="writer"
+          trim
+          placeholder="작성자를 입력하세요."
+        ></b-form-input>
+      </b-form-group>
+      <b-form-group label="내용" label-for="input-3">
+        <b-form-textarea
+          id="input-3"
+          v-model="content"
+          trim
+          placeholder="내용을 입력하세요."
+        ></b-form-textarea>
+      </b-form-group>
+      <b-button variant="outline-success" @click="createBoard"
+        >등록하기</b-button
+      >
+    </div>
   </div>
 </template>
 

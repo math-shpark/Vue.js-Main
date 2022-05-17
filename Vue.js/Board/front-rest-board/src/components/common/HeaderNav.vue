@@ -1,15 +1,17 @@
 <template>
   <header>
-    <nav class="header-nav">
-      <div>
-        <router-link :to="{name: 'home'}">메인</router-link>
-      </div>
-      <div>
-        <router-link to="/board">목록</router-link>
-        <router-link :to="{name: 'boardCreate'}">등록</router-link>
-        <router-link to="#">API</router-link>
-      </div>
-    </nav>
+    <b-navbar toggleable="lg" type="dark" variant="dark">
+      <b-navbar-brand :to="{ name: 'home' }">메인</b-navbar-brand>
+
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav class="ml-auto">
+          <b-nav-item to="/board">목록</b-nav-item>
+          <b-nav-item :to="{ name: 'boardCreate' }">등록</b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
   </header>
 </template>
 
@@ -18,25 +20,4 @@ export default {};
 </script>
 
 <style>
-header {
-  height: 70px;
-  background-color: black;
-  line-height: 70px;
-  padding: 0px 30px;
-}
-
-.header-nav {
-  display: flex;
-  justify-content: space-between;
-}
-
-nav a {
-    font-weight: bold;
-    color: white;
-    text-decoration: none;
-}
-
-nav a.router-link-exact-active {
-    color: #42b983;
-}
 </style>

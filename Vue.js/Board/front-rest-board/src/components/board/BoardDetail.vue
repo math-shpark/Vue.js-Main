@@ -1,15 +1,28 @@
 <template>
   <div>
     <h3>글 상세 페이지</h3>
-    <div>
-      <div>제목 : {{ board.title }}</div>
-      <div>조회수 : {{ board.viewCnt }}</div>
-      <div>작성자 : {{ board.writer }}</div>
-      <div>작성일 : {{ board.regDate }}</div>
-      <div>내용 : {{ board.content }}</div>
+    <div class="m-4">
+      조회수 : <b-badge variant="danger">{{ board.viewCnt }}</b-badge>
+      <b-form-group label="제목" label-for="input-1">
+        <b-form-input id="input-1" :value="board.title" disabled></b-form-input>
+      </b-form-group>
+      <b-form-group label="글쓴이" label-for="input-2">
+        <b-form-input
+          id="input-2"
+          :value="board.writer"
+          disabled
+        ></b-form-input>
+      </b-form-group>
+      <b-form-group label="내용" label-for="input-3">
+        <b-form-textarea
+          id="input-3"
+          :value="board.content"
+          disabled
+        ></b-form-textarea>
+      </b-form-group>
+      <b-button variant="outline-primary" @click="moveUpdate">수정</b-button>
+      <b-button variant="outline-danger" @click="deleteBoard">삭제</b-button>
     </div>
-    <button @click="moveUpdate">수정</button>
-    <button @click="deleteBoard">삭제</button>
   </div>
 </template>
 

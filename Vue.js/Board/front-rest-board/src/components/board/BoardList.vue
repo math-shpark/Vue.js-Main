@@ -1,34 +1,51 @@
 <template>
-  <div>
+  <div class="container">
     <h3>글 목록 페이지</h3>
     <hr />
-    <div>
-      <table>
-        <tr>
-          <th>번호</th>
-          <th>제목</th>
-          <th>글쓴이</th>
-          <th>조회 수</th>
-          <th>등록일</th>
-        </tr>
-        <tr v-for="board in boards" :key="board.id">
-          <td>{{ board.id }}</td>
-          <td><router-link :to="`/board/${board.id}`">{{ board.title }}</router-link></td>
-          <td>{{ board.writer }}</td>
-          <td>{{ board.viewCnt }}</td>
-          <td>{{ board.regDate }}</td>
-        </tr>
-      </table>
+    <div v-if="boards">
+      <b-table-simple hover responsive class="text-center">
+        <b-thead>
+          <b-tr>
+            <b-th>번호</b-th>
+            <b-th>제목</b-th>
+            <b-th>글쓴이</b-th>
+            <b-th>조회수</b-th>
+            <b-th>등록일</b-th>
+          </b-tr>
+        </b-thead>
+        <b-tbody>
+          <b-tr v-for="board in pageBoardList" :key="board.id">
+            <b-td>{{ board.id }}</b-td>
+            <b-td
+              ><b-link :to="`/board/${board.id}`">{{
+                board.title
+              }}</b-link></b-td
+            >
+            <b-td>{{ board.writer }}</b-td>
+            <b-td>{{ board.viewCnt }}</b-td>
+            <b-td>{{ board.regDate }}</b-td>
+          </b-tr>
+        </b-tbody>
+      </b-table-simple>
     </div>
+    <div v-else>등록된 게시글이 없습니다.</div>
     <div>
       <select v-model="mode">
         <option value="1">제목</option>
         <option value="2">내용</option>
         <option value="3">제목 + 내용</option>
       </select>
-      <input type="text" v-model="keyword">
+      <input type="text" v-model="keyword" />
       <button @click="search">검색</button>
     </div>
+
+    <b-pagination
+      v-model="currentPage"
+      :total-rows="rows"
+      :per-page="perPage"
+      aria-controls="my-table"
+      align="center"
+    ></b-pagination>
   </div>
 </template>
 
@@ -37,27 +54,38 @@ import { mapState } from "vuex";
 
 export default {
   name: "BoardList",
-  data(){
-    return{
+  data() {
+    return {
       mode: 1,
-      keyword: '',
-    }
+      keyword: "",
+      currentPage: 1,
+      perPage: 10,
+    };
   },
   computed: {
     ...mapState(["boards"]),
+    rows() {
+      return this.boards.length;
+    },
+    pageBoardList() {
+      return this.boards.slice(
+        (this.currentPage - 1) * this.perPage,
+        this.currentPage * this.perPage
+      );
+    },
   },
-  created(){
-    this.$store.dispatch('getBoards')
+  created() {
+    this.$store.dispatch("getBoards");
   },
   methods: {
-    search(){
+    search() {
       const payload = {
         mode: this.mode,
-        keyword: this.keyword
-      }
+        keyword: this.keyword,
+      };
       this.$store.dispatch("getBoards", payload);
-    }
-  }
+    },
+  },
 };
 </script>
 
