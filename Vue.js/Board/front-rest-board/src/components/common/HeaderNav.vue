@@ -9,6 +9,7 @@
         <b-navbar-nav class="ml-auto">
           <b-nav-item to="/board">목록</b-nav-item>
           <b-nav-item :to="{ name: 'boardCreate' }">등록</b-nav-item>
+          <b-nav-item to="/map">카카오 Map</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>

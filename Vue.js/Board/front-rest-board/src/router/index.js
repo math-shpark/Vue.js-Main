@@ -6,6 +6,7 @@ import BoardList from '../components/board/BoardList.vue'
 import BoardCreate from '../components/board/BoardCreate.vue'
 import BoardUpdate from '../components/board/BoardUpdate.vue'
 import BoardDetail from '../components/board/BoardDetail.vue'
+import KaKaoMapView from '../views/KaKaoMapView.vue'
 
 Vue.use(VueRouter)
 
@@ -38,8 +39,13 @@ const routes = [
         path: ":id",
         name: "boardDetail",
         component: BoardDetail
-      }
+      },
     ]
+  },
+  {
+    path: "/map",
+    name: "map",
+    component: KaKaoMapView
   }
 ]
 
