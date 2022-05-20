@@ -36,7 +36,10 @@ export default new Vuex.Store({
       axios({
         url: API_URL,
         method: 'GET',
-        params
+        params,
+        headers: {
+          "access-token": "eyJhbG9nIjoiSFMyNTYiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6InNzYWZ5In0.00RDgPGJzeJsd4X0DM6Cskw4i7l2gfnNCubD-O1I2Sg"
+        }
       }).then((res) => {
         commit('GET_BOARDS', res.data)
       }).catch((err) => {
